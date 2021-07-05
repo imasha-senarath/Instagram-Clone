@@ -1,10 +1,11 @@
+const e = require('express')
 const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
 const Post = mongoose.model("Post")
 const requireLogin = require('../middleware/requirelogin')
 
-router.get('/getallpost',(req, res)=>{
+router.get('/getallpost', requireLogin,     (req, res)=>{
     Post.find()
     .populate("postOwner", "_id name")
     .then(posts=>{
@@ -14,6 +15,19 @@ router.get('/getallpost',(req, res)=>{
         console.log(err)
     }) 
 })
+
+
+router.get('/getmypost',requireLogin, (req, res)=>{
+    Post.find({postOwner:req.user._id})
+    .populate("postOwner", "_id name")
+    .then(mypost=>{
+        res.json({mypost})
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+})
+
 
 router.post('/createpost',requireLogin,(req, res) =>{
     const {description} = req.body
