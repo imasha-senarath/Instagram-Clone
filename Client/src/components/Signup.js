@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import {Link, useHistory} from 'react-router-dom'
 import './Signup.css'
 
 const Signup = () =>{
@@ -27,17 +28,20 @@ const Signup = () =>{
                 document.getElementById("signup-error").style.color = "rgb(27, 226, 37)"
                 document.getElementById("signup-error").innerHTML = data.Message
             }
+        }).catch(err=>{
+            console.log(err)
         })
     }
     return(
         <div className="wrapper">
         <div className="signup-container">
-            <img src="https://i0.wp.com/www.dafontfree.io/wp-content/uploads/2020/12/instagram-new.png?resize=1100%2C750&ssl=1"></img>
+        <h1 className="brand-name">Instagram</h1>
             <input type="text" placeholder="Name" value={name} onChange={(e)=>setName(e.target.value)}></input>
             <input type="text" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)}></input>
             <input type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)}></input>
-            <p id="signup-error"> error message </p>
-            <button onClick={()=>RegisterUser()}>Log in</button>
+            <h6 id="signup-error"> error message </h6>
+            <button onClick={()=>RegisterUser()}>Sign Up</button>
+            <p><Link to="./" style={{ color: 'inherit', textDecoration: 'inherit'}}>Have an account? Log in</Link></p>
         </div>
     </div>
     )

@@ -1,12 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
 *{
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .wrapper{
     height: 100vh;
     background-color: rgb(248, 248, 248);
     width: 100%;
+}
+
+.brand-name{
+    font-family: 'Grand Hotel', cursive;
+    margin-bottom: 20px;
+    font-size: 50px;
+    font-weight: 500;
 }
 
 .signup-container{
@@ -22,17 +34,31 @@
     transform: translate(0, -50%);
 }
 
-.signup-container img{
-    width: 200px;
+.signup-container input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(248, 248, 248);
+    border: 1px solid rgb(230, 230, 230);
+}
+
+#signup-error{
+    font-weight: 400;
+    display: none;
 }
 
 .signup-container button{
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 8px;
+    background-color: rgb(0, 132, 255);
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
 }
 
-#signup-error{
-    color: red;
-    display: none;
+.signup-container p{
+    margin-top: 20px;
+    font-size: 13px;
 }

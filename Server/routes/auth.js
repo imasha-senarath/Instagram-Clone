@@ -53,7 +53,8 @@ router.post('/login',(req,res)=>{
             if(doMatch) {
                 //res.json({Message:"Login successful"})
                 const token = jwt.sign({_id:savedUser._id}, JWT_SECRET)
-                res.json({token})
+                const {_id, name, email} = savedUser
+                res.json({token, user:{_id, name, email}})
             } else {
                 return res.status(422).json({Error:"User does not exist or wrong login details"})
             }
